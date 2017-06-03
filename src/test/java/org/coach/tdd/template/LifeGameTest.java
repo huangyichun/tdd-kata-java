@@ -30,16 +30,46 @@ public class LifeGameTest {
     }
 
     @Test
+    public void shouldReturnRightStatusInputMapTwoLivePoint() {
+
+        maps[2][2] = 1;
+        maps[2][1] = 1;
+        int[][] map = lifeGame.nextStatus(maps);
+        Assert.assertEquals(map[2][2], died);
+        Assert.assertEquals(map[2][1], died);
+    }
+
+
+
+    @Test
     public void shouldReturnRightStatusInputMapForthLivePoint() {
         maps[2][2] = 1;
         maps[2][3] = 1;
         maps[3][2] = 1;
         maps[3][3] = 1;
         int[][] map = lifeGame.nextStatus(maps);
-        Assert.assertEquals(maps[2][2], live);
-        Assert.assertEquals(maps[2][3], live);
-        Assert.assertEquals(maps[3][2], live);
-        Assert.assertEquals(maps[3][3], live);
+        Assert.assertEquals(map[2][2], live);
+        Assert.assertEquals(map[2][3], live);
+        Assert.assertEquals(map[3][2], live);
+        Assert.assertEquals(map[3][3], live);
+    }
+
+    @Test
+    public void shouldReturnRightStatusInputMapSixLivePoint() {
+        maps[2][2] = 1;
+        maps[3][1] = 1;
+        maps[3][3] = 1;
+        maps[4][1] = 1;
+        maps[4][3] = 1;
+        maps[5][2] = 1;
+
+        int[][] map = lifeGame.nextStatus(maps);
+        Assert.assertEquals(map[2][2], live);
+        Assert.assertEquals(map[3][1], live);
+        Assert.assertEquals(map[3][3], live);
+        Assert.assertEquals(map[4][1], live);
+        Assert.assertEquals(map[4][3], live);
+        Assert.assertEquals(map[5][2], live);
     }
 
     @Test
