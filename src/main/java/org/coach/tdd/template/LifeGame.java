@@ -1,5 +1,7 @@
 package org.coach.tdd.template;
 
+import com.sun.xml.internal.ws.api.ResourceLoader;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -9,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 public class LifeGame extends AbstractLifeGame {
 
@@ -71,7 +74,8 @@ public class LifeGame extends AbstractLifeGame {
 
     public void initProperties() {
         Properties properties = new Properties();
-        File file = new File("E:\\workspace\\tdd-kata-java\\src\\lifeGame.properties");
+        String path = LifeGame.class.getClassLoader().getResource("lifeGame.properties").getPath();
+        File file = new File(path);
         try {
             FileInputStream inputStream = new FileInputStream(file);
             properties.load(inputStream);
