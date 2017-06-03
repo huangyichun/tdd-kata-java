@@ -16,8 +16,32 @@ public class LifeGame {
      * @return  grid
      */
     public int[][] changeStatus(int[][] map) {
+        for(int i=0; i<map.length; ++i){
+            for(int j=0; j<map[0].length; ++j){
+                neighbores[i][j] = countNeighborsLiveSize(map, i, j);
+            }
+        }
+        for(int i=0; i<map.length; ++i){
+            for(int j=0; j< map[0].length; ++j){
 
+            }
+        }
         return null;
+    }
+
+    /**
+     * according lifeNum check the point is life or die
+     * @param currentStatus current status
+     * @param lifeNum   life numbers
+     * @return status
+     */
+    public int isLifeOrDie(int currentStatus, int lifeNum){
+
+        if(lifeNum == 3)
+            return LIVE;
+        else if(lifeNum == 2 && currentStatus == LIVE)
+            return LIVE;
+        return DIED;
     }
 
     /**

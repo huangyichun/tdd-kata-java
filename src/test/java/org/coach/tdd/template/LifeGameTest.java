@@ -9,12 +9,26 @@ import org.junit.Test;
  */
 public class LifeGameTest {
 
+    private final static int LIVE = 1;
+    private final static int DIED = 0;
     LifeGame lifeGame;
     int[][] map;
     @Before
     public void initLifeGameParameter(){
         lifeGame = new LifeGame();
         map = new int[8][8];
+    }
+
+    @Test
+    public void shouldReturnLiveInputLifeAndLifeNum3(){
+        int status = lifeGame.isLifeOrDie(LIVE, 3);
+        Assert.assertEquals(status, LIVE);
+    }
+
+    @Test
+    public void shouldReturnDieInputDieAndLifeNum2(){
+        int status = lifeGame.isLifeOrDie(DIED, 2);
+        Assert.assertEquals(status, DIED);
     }
 
     @Test
