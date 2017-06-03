@@ -4,75 +4,77 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.*;
-
 /**
  * life game test .
  */
-public class LifeGameTest extends JFrame{
+public class LifeGameTest {
 
-    private final int LIVE = 1;
-    private final int DIED = 0;
-    LifeGame lifeGame;
+    private LifeGame lifeGame;
+    private final int live = 1;
+    private final int died = 0;
     private int[][] maps = new int[8][8];
     @Before
-    public void initLifeGameParameter(){
+    public void initLifeGameParameter() {
         lifeGame = new LifeGame();
+        lifeGame.initPoint();
+        lifeGame.initProperties();
+        lifeGame.init();
     }
 
     @Test
-    public void shouldReturnRightStatusInputMapOneLivePoint(){
+    public void shouldReturnRightStatusInputMapOneLivePoint() {
+
         maps[2][2] = 1;
         int[][] map = lifeGame.nextStatus(maps);
-        Assert.assertEquals(maps[2][2], DIED);
+        Assert.assertEquals(map[2][2], died);
     }
 
     @Test
-    public void shouldReturnRightStatusInputMapForthLivePoint(){
+    public void shouldReturnRightStatusInputMapForthLivePoint() {
         maps[2][2] = 1;
         maps[2][3] = 1;
         maps[3][2] = 1;
         maps[3][3] = 1;
         int[][] map = lifeGame.nextStatus(maps);
-        Assert.assertEquals(maps[2][2], LIVE);
-        Assert.assertEquals(maps[2][3], LIVE);
-        Assert.assertEquals(maps[3][2], LIVE);
-        Assert.assertEquals(maps[3][3], LIVE);
+        Assert.assertEquals(maps[2][2], live);
+        Assert.assertEquals(maps[2][3], live);
+        Assert.assertEquals(maps[3][2], live);
+        Assert.assertEquals(maps[3][3], live);
     }
 
     @Test
-    public void shouldReturnLiveInputLifeAndLifeNum3(){
-        int status = lifeGame.isLifeOrDie(LIVE, 3);
-        Assert.assertEquals(status, LIVE);
+    public void shouldReturnLiveInputLifeAndLifeNum3() {
+        int status = lifeGame.isLifeOrDie(live, 3);
+        Assert.assertEquals(status, live);
     }
 
     @Test
-    public void shouldReturnDieInputDieAndLifeNum2(){
-        int status = lifeGame.isLifeOrDie(DIED, 2);
-        Assert.assertEquals(status, DIED);
+    public void shouldReturnDieInputDieAndLifeNum2() {
+        int status = lifeGame.isLifeOrDie(died, 2);
+        Assert.assertEquals(status, died);
     }
 
     @Test
-    public void giveSecondXYCountNeighborsLiveSize(){
+    public void giveSecondXYCountNeighborsLiveSize() {
         maps[4][4] = 1;
         maps[5][4] = 1;
-        int count = lifeGame.countNeighborsLiveSize(maps,5, 5);
+        int count = lifeGame.countNeighborsLiveSize(maps, 5, 5);
         Assert.assertEquals(count, 2);
     }
 
     @Test
-    public void giveOneXYCountNeighborsLiveSize(){
+    public void giveOneXYCountNeighborsLiveSize() {
         maps[5][4] = 1;
-        int count = lifeGame.countNeighborsLiveSize(maps,5, 5);
+        int count = lifeGame.countNeighborsLiveSize(maps, 5, 5);
         Assert.assertEquals(count, 1);
     }
 
     @Test
-    public void giveBorderXYCountNeighborsLiveSize(){
+    public void giveBorderXYCountNeighborsLiveSize() {
         maps[0][1] = 1;
         maps[1][0] = 1;
         maps[1][1] = 1;
-        int count = lifeGame.countNeighborsLiveSize(maps,0, 0);
+        int count = lifeGame.countNeighborsLiveSize(maps, 0, 0);
         Assert.assertEquals(count, 3);
     }
 
