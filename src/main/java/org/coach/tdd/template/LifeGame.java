@@ -1,7 +1,5 @@
 package org.coach.tdd.template;
 
-import com.sun.xml.internal.ws.api.ResourceLoader;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -11,7 +9,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 public class LifeGame extends AbstractLifeGame {
 
