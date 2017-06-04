@@ -14,7 +14,7 @@ public class LifeGame extends AbstractLifeGame {
 
     private static final int LIVE = 1;
     private static final int DIED = 0;
-    protected Point[] points = new Point[8];
+    private Point[] points = new Point[8];
     private int tableSize = 50;
     private int gridSize = 15;
     private Color lifeCell = new Color(204, 0, 0);
@@ -30,7 +30,7 @@ public class LifeGame extends AbstractLifeGame {
     public void run() {
         long currentTime = System.currentTimeMillis();
         while (Thread.currentThread() == controlThread) {
-            if (isRun == true) {
+            if (isRun) {
                 nextStatus(currentMap);
                 repaint();
             }
