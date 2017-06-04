@@ -26,7 +26,6 @@ public class LifeGame extends AbstractLifeGame {
     private boolean isRun;
 
 
-
     @Override
     public void run() {
         long currentTime = System.currentTimeMillis();
@@ -167,25 +166,26 @@ public class LifeGame extends AbstractLifeGame {
         return currentMap;
     }
 
-    public int isLifeOrDie(int currentStatus, int lifeNum) {
-        int isLive = 0;
-        if (Integer.valueOf(3).equals(lifeNum)) {
+    public int isLifeOrDie(int currentStatus, int aroundLifeNum) {
+        int isLive = DIED;
+        if (Integer.valueOf(3).equals(aroundLifeNum)) {
             isLive = LIVE;
-        } else if (Integer.valueOf(2).equals(lifeNum) && currentStatus == LIVE) {
+        } else if (Integer.valueOf(2).equals(aroundLifeNum) && currentStatus == LIVE) {
             isLive = LIVE;
         }
         return isLive;
     }
 
-    public int countNeighborsLiveSize(int[][] map, int x, int y) {
-        int count = 0;
+    public int countNeighborsLiveSize(int[][] currentMap, int x, int y) {
+        int countLivedCell = 0;
         for (int i = 0; i < 8; ++i) {
-            int r = points[i].x + x;
-            int l = points[i].y + y;
-            if (r >= 0 && r < map.length && l >= 0 && l < map.length && map[r][l] == LIVE) {
-                ++count;
+            int r = points[i].offsetX + x;
+            int l = points[i].offsetY + y;
+            if (r >= 0 && r < currentMap.length && l >= 0 &&
+                    l < currentMap.length && currentMap[r][l] == LIVE) {
+                ++countLivedCell;
             }
         }
-        return count;
+        return countLivedCell;
     }
 }

@@ -4,11 +4,11 @@ package org.coach.tdd.template;
  * Created by huangyichun on 2017/6/3.
  */
 public class Point {
-    protected int x;
-    protected int y;
+    protected int offsetX;
+    protected int offsetY;
 
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Point(int offsetX, int offsetY) {
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
     }
 }
